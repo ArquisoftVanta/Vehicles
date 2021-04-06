@@ -1,0 +1,170 @@
+swagger: "2.0"
+info:
+  description: "This is a sample microservice within the VANTA app"
+  version: "1.0.0"
+  title: "Vanta"
+  contact:
+    email: "semorenore@unal.edu.co"
+basePath: "/vehicle"
+tags:
+- name: "vehicle"
+  description: "Microservice that handles the informations about the vehicles on the user's account"
+  
+schemes:
+- "https"
+- "http"
+
+paths:
+  /vehicle:
+    post:
+      tags:
+      - "vehicle"
+      summary: "Create a new vehicle on the user's account"
+      description: "This can only be done by the logged in user."
+      operationId: "createUser"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Created vehicle object"
+        required: true
+        schema:
+          $ref: "#/definitions/Vehicle"
+      responses:
+        default:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Vehicle"
+            
+    get:
+      tags:
+      - "vehicle"
+      summary: "Find all users"
+      description: "Returns all users"
+      operationId: "getVehicles"
+      produces:
+      - "application/xml"
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items: 
+              $ref: "#/definitions/Vehicle"
+        "404":
+          description: "Vehicle not found"
+          
+  /vehicle/{vehicleId}:
+    get:
+      tags:
+      - "vehicle"
+      summary: "Get a vehicle by vehicle Id"
+      description: ""
+      operationId: "getVehicle"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "vehicleId"
+        in: "path"
+        description: "The user Id that needs to be fetched."
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Vehicle"
+        "404":
+          description: "Vehicle not found"
+          
+    put:
+      tags:
+      - "vehicle"
+      summary: "Updated an existing vehicle"
+      description: ""
+      operationId: "updateVehicle"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "vehicleId"
+        in: "path"
+        description: "The vehicleId of the vehicle that needs to be updated"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Updated vehicle object"
+        required: true
+        schema:
+          $ref: "#/definitions/Vehicle"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Vehicle"
+            
+    delete:
+      tags:
+      - "vehicle"
+      summary: "Delete user"
+      description: ""
+      operationId: "deleteUser"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "vehicleId"
+        in: "path"
+        description: "The vehicleId of the vehicle that needs to be deleted"
+        required: true
+        type: "string"
+      responses:
+        default:
+          description: "Vehicle deleted succsessfully"
+        "404":
+          description: "Vehicle not found"
+            
+            
+definitions:
+  Vehicle:
+    type: "object"
+    properties:
+      vehicleId:
+        type: "number"
+      owner:
+        type: "number"
+      license_plate:
+        type: "string"
+      vehicle_type:
+        type: "number"
+      model:
+        type: "string"
+      year:
+        type: "number"
+      color:
+        type: "string"
+      registry:
+        type: "string"
+      picture:
+        type: "string"
+      capacity:
+        type: "number"
+      brand:
+        type: "string"
+      service_type:
+        type: "string"
+      body:
+        type: "string"
+      soat_exp:
+        type: "string"
+      engine:
+        type: "number"
+      gas_type:
+        type: "string"
+    xml:
+      name: "User"
