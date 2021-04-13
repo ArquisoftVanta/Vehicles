@@ -13,8 +13,7 @@
 ActiveRecord::Schema.define(version: 20210403212659) do
 
   create_table "vehicles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.integer  "vehicle_id"
-    t.integer  "owner"
+    t.string   "owner"
     t.string   "license_plate"
     t.integer  "vehicle_type"
     t.string   "model"

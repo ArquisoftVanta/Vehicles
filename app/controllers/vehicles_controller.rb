@@ -15,13 +15,13 @@ class VehiclesController < ApplicationController
     end
   
     def show
-      vehicle = Vehicle.find(params[:id])
+      vehicle = Vehicle.where(params[:owner])
       render json: {status: 'SUCCES', message:'Loaded vehicle', data:vehicle},status: :ok
     end
   
     def update
       vehicle = Vehicle.find(params[:id])
-      if vehicle.updated_attributes(vehicle_params)
+      if vehicle.updated_attributes(upd_params)
         render json: {status: 'SUCCES', message:'Updated vehicle', data:vehicle},status: :ok
       else
         render json: {status: 'ERROR', message:'Vehicle not updated', data:vehicle.errors},status: :unprocessable_entity
@@ -36,7 +36,9 @@ class VehiclesController < ApplicationController
   
     private
     def vehicle_params
-      params.permit(:vehicle_id, :owner, :license_plate, :vehicle_type, :model, :year, :color, :registry, :picture, :capacity, :brand, :service_type, :body, :soat_exp, :engine, :gas_type)
+      params.permit(:owner, :license_plate, :vehicle_type, :model, :year, :color, :registry, :picture, :capacity, :brand, :service_type, :body, :soat_exp, :engine, :gas_type)
     end
-  end
-  
+
+    def upd_params
+      params.permit(:id, :owner, :license_plate, :vehicle_type, :model, :year, :color, :registry, :picture, :capacity, :brand, :service_type, :body, :soat_exp, :engine, :gas_type)
+  end  

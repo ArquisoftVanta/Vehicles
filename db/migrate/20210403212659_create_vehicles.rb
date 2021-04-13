@@ -1,8 +1,7 @@
 class CreateVehicles < ActiveRecord::Migration[5.0]
   def change
     create_table :vehicles do |t|
-      t.integer :vehicle_id
-      t.integer :owner
+      t.string :owner
       t.string :license_plate
       t.integer :vehicle_type
       t.string :model
