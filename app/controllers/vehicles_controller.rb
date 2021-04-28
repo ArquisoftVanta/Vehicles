@@ -21,7 +21,7 @@ class VehiclesController < ApplicationController
   
     def update
       vehicle = Vehicle.find(params[:id])
-      if vehicle.updated_attributes(upd_params)
+      if vehicle.update(upd_params)
         render json: {status: 'SUCCES', message:'Updated vehicle', data:vehicle},status: :ok
       else
         render json: {status: 'ERROR', message:'Vehicle not updated', data:vehicle.errors},status: :unprocessable_entity
