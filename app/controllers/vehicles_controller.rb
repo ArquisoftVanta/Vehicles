@@ -42,3 +42,4 @@ class VehiclesController < ApplicationController
     def upd_params
       params.permit(:id, :owner, :license_plate, :vehicle_type, :model, :year, :color, :registry, :picture, :capacity, :brand, :service_type, :body, :soat_exp, :engine, :gas_type)
   end  
+end
