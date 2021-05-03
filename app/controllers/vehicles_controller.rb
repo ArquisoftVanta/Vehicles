@@ -15,7 +15,7 @@ class VehiclesController < ApplicationController
     end
   
     def show
-      vehicle = Vehicle.where(params[:owner])
+      vehicle = Vehicle.find(params[:id])
       render json: {status: 'SUCCES', message:'Loaded vehicle', data:vehicle},status: :ok
     end
   
