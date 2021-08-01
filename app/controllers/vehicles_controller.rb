@@ -18,6 +18,11 @@ class VehiclesController < ApplicationController
       vehicle = Vehicle.find(params[:id])
       render json: {status: 'SUCCES', message:'Loaded vehicle', data:vehicle},status: :ok
     end
+
+    def plateFiltering
+      vehicle = Vehicle.where("license_plate = ?", params[:license_plate])
+      render json: {status: 'SUCCES', message:'Loaded vehicles by plates', data:vehicle},status: :ok
+    end
   
     def update
       vehicle = Vehicle.find(params[:id])
