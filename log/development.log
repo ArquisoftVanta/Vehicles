@@ -9653,3 +9653,11 @@ Processing by VehiclesController#plateFiltering as */*
 Completed 200 OK in 10ms (Views: 8.7ms | ActiveRecord: 0.6ms)
 
 
+Started GET "/vehicles/plate_search/plate" for 172.19.0.1 at 2021-08-01 03:54:35 +0000
+Cannot render console from 172.19.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by VehiclesController#plateFiltering as */*
+  Parameters: {"license_plate"=>"plate"}
+  [1m[36mVehicle Load (0.3ms)[0m  [1m[34mSELECT `vehicles`.* FROM `vehicles` WHERE (license_plate = 'plate')[0m
+Completed 200 OK in 9ms (Views: 6.6ms | ActiveRecord: 1.1ms)
+
+
